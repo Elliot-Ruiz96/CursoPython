@@ -1,5 +1,7 @@
 #En las tuplas no puede cambiar ni un solo valor despues de declararlas al principio
 #Si se usa tupla[-1] (un negativo en el indice) busca de fin a inicio
+#Los indices empiezan desde 0
+# https://recursospython.com/guias-y-manuales/listas-y-tuplas/
 
 tupla = 'Hola' , 2 , 3.4 , False , [ 1 , 'test' ] , 2 , 2
 tupla2 = tuple()
