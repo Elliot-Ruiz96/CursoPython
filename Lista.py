@@ -1,4 +1,6 @@
 #En las listas se pueden cambiar los valores despues de declararlas al principio
+#Si se usa lista[-1] (un negativo en el indice) busca de fin a inicio
+#Los indices empiezan desde 0
 
 lista = [ ]
 lista2 = [ ]
