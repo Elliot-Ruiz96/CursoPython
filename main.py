@@ -1,4 +1,10 @@
-a = 2
-b = 2
+from Pack.Funciones import funcion
 
-print(a+b)
+def main():
+    funcion()
+
+
+if __name__ == '__main__':
+
+    print('main')
+    main()
