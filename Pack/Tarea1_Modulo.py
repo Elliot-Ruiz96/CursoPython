@@ -28,5 +28,3 @@ def funcion(s_user, s_pc):
         print('Empate!')
 
 
-if __name__ == '__main__':
-    print('Tarea1')
