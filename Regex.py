@@ -11,4 +11,9 @@ coincidencia2 = re.search(patron, texto)
 
 encontrar = re.findall(patron2, texto)
 
+lista = ['unos', 'dos', 'tres']
+
+for item in lista:
+    m = re.search
+
 pass
