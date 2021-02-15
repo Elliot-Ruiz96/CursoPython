@@ -1,7 +1,7 @@
-#import random
-#s_user = input()
-#s_pc = random.choice(['piedra', 'papel', 'tijera'])
-#s_user = 'piedra', s_pc = 'tijera'
+# import random
+# s_user = input()
+# s_pc = random.choice(['piedra', 'papel', 'tijera'])
+# s_user = 'piedra', s_pc = 'tijera'
 
 
 def funcion(s_user, s_pc):
@@ -26,6 +26,3 @@ def funcion(s_user, s_pc):
             print('Seleccion no valida!')
     else:
         print('Empate!')
-
-
-+
