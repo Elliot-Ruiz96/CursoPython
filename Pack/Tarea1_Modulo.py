@@ -28,3 +28,4 @@ def funcion(s_user, s_pc):
         print('Empate!')
 
 
++
