@@ -1,10 +1,17 @@
-import re
+from Pack.Tarea2_Modulo import validacion
 
-print("Ingresa tu email: \n")
+
+def main():
+    validacion(correo, numero, curp, rfc)
+
+
+print("Ingresa tu email: ")
 correo = input()
-print("Ingresa tu numero celular: \n")
+print("Ingresa tu numero celular: ")
 numero = input()
-print("Ingresa tu RCF: \n")
-rfc = input()
-print("Ingresa tu CURP: \n")
+print("Ingresa tu CURP: ")
 curp = input()
+print("Ingresa tu RCF: ")
+rfc = input()
+
+main()
