@@ -46,3 +46,6 @@ def validacion(correo, telefono, curp, rfc):
 # 4775531264
 # RUSE960823HGTZNL03
 # RUSE9608231H0
+
+# Para validar de una manera mas precisa el rfc y el curp
+# se debe validar los diferentes grupos de datos para su construccion
