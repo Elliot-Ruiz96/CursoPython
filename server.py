@@ -21,3 +21,4 @@ print(ss2)
 print(type(ss2))
 
 # No imprime debido a que encuenra una h primero en lugar de la direccion \x80
+
