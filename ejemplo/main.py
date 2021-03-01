@@ -21,6 +21,7 @@ class Ui_Form(QWidget):
         loader.load(ui_file, self)
         ui_file.close()
 
+
 if __name__ == "__main__":
     app = QApplication([])
     widget = Ui_Form()
