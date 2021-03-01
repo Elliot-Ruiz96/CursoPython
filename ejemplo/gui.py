@@ -1,6 +1,7 @@
 from PySide2.QtWidgets import QApplication
 from PySide2.QtWidgets import QMainWindow
 import sys
+from main import Ui_Form
 
 # Windows -> desinger.exe
 
