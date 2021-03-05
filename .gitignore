@@ -3,3 +3,6 @@ venv
 .pyc
 .gitattributes
 *.pyc
+*.ui
+*.user
+*.ui
