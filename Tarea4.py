@@ -118,7 +118,6 @@ def menu():
         print("4. Eliminar estudiantes.")
         print("5. Salir")
         opcion = input("Seleciona un opcion: ")
-
         if opcion == "1":
             print("")
             nombre = input("Ingresa nombre del estudiante: ")
@@ -126,18 +125,12 @@ def menu():
             contrasenia = input("Ingresa contrasenia del estudiante: ")
             materias = input("Ingresa materias del estudiante: ")
             escritura(Estudiantes(nombre, correo, contrasenia, materias))
-
         if opcion == "2":
             modificacion()
-
         if opcion == "3":
             lectura()
-            input("Presiona enter para continuar")
-
         if opcion == "4":
             eliminacion()
-            input("Presiona enter para continuar")
-            
         if opcion == "5":
             ciclo = False
 
