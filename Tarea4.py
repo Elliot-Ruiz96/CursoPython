@@ -5,7 +5,7 @@ connect('IECA', host='Localhost', port=27017)
 
 
 class estudiantes(Document):
-    Nombre_estudiante = StringField(required=True,max_length=200)
+    Nombre_estudiante = StringField(required=True, max_length=200)
     Correo_estudiantil = StringField(required=True)
     Contrasenia = StringField(required=True)
     Materias = StringField(required=True)
@@ -29,7 +29,7 @@ class Estudiantes:
         self.contrasenia = contrasenia
         self.materias = materias
 
-#def base_Datos:
+# def base_Datos:
 
 
 def escritura(student):
@@ -46,7 +46,7 @@ def escritura(student):
         else:
             print("Estudiante ya ingresado")
             repetido = True
-            det = input("Presione enter para continuar")
+            input("Presione enter para continuar")
 
     if aceptado:
         datos = estudiantes(
@@ -87,7 +87,7 @@ def modificacion():
     # User =  input("Ingresa nombre de usuario a modificar: ")
     # User_nuev = input("Ingresa el nuevo nombre el usuario");
     # estudiantes.objects(Nombre_estudiante = User).update_one(set__Nombre_estudiante = User_nuev)
-    #estudiantes.objects(Nombre_estudiante="Cesar").delete()
+    # estudiantes.objects(Nombre_estudiante="Cesar").delete()
     # Nombre = input("Nuevo nombre usuario: ")
     # Correo = input("Nuevo Correo: ")
     # Contra = input("Nueva contraseña: ")
@@ -133,11 +133,11 @@ def menu():
 
         if opcion == "3":
             lectura()
-            det = input("Presiona enter para continuar")
+            input("Presiona enter para continuar")
 
         if opcion == "4":
             eliminacion()
-            det2 = input("Presiona enter para continuar")
+            input("Presiona enter para continuar")
             
         if opcion == "5":
             ciclo = False
