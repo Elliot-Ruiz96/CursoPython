@@ -110,15 +110,14 @@ def menu():
     ciclo = True
 
     while ciclo:
-        print("")
-        print("*****Base de datos IECA*****")
-        print("")
-        print("Ingresar estudiante  ---> 1")
-        print("Modificar estudiante ---> 2")
-        print("Mostrar estudiantes  ---> 3")
-        print("Eliminar estudiantes ---> 4")
-        print("Salir                ---> 5")
-        opcion = input("Seleciona un opcion  ---> ")
+        print("\n\t\t\tTAREA 4\n")
+        print("Bienvenido al menu de opciones.\n")
+        print("1. Ingresar estudiante.")
+        print("2. Modificar estudiante.")
+        print("3. Mostrar estudiantes.")
+        print("4. Eliminar estudiantes.")
+        print("5. Salir")
+        opcion = input("Seleciona un opcion: ")
 
         if opcion == "1":
             print("")
