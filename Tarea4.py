@@ -87,7 +87,7 @@ def modificacion():
     # User =  input("Ingresa nombre de usuario a modificar: ")
     # User_nuev = input("Ingresa el nuevo nombre el usuario");
     # estudiantes.objects(Nombre_estudiante = User).update_one(set__Nombre_estudiante = User_nuev)
-    # estudiantes.objects(Nombre_estudiante="Cesar").delete()
+    # estudiantes.objects(Nombre_estudiante="Elliot").delete()
     # Nombre = input("Nuevo nombre usuario: ")
     # Correo = input("Nuevo Correo: ")
     # Contra = input("Nueva contraseña: ")
@@ -99,10 +99,10 @@ def modificacion():
     # Eliminar[0].delete()
 
     # Eliminar[0].deleted()
-    p = estudiantes.objects(Nombre_estudiante="Cesar")
+    p = estudiantes.objects(Nombre_estudiante="Elliot")
     estudiantes.objects(Nombre_estudiante=p[0].Nombre_estudiante).update_one(set__Nombre_estudiante="Hola")
     estudiantes.objects(Materias=p[0].Materias).update_one(set__Materias="Adios")
-    print(p[0].Contraseña)
+    print(p[0].Contrasenia)
     p[0].save()
 
 
