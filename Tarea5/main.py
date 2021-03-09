@@ -1,3 +1,7 @@
+import sys
+from PySide6 import QtWidgets, QtCore
+from PySide6.QtWidgets import QLineEdit
+from PySide6.QtWidgets import *
 from mongoengine import *
 
 connect('IECA', host='Localhost', port=27017)
@@ -10,105 +14,132 @@ class estudiantes(Document):
     Materias = StringField(required=True)
 
 
-class Estudiantes:
-    nombre = ""
-    correo = ""
-    contrasenia = ""
-    materias = ""
-
-    def __init__(self, nombre, correo, contrasenia, materias):
-        self.nombre = nombre
-        self.correo = correo
-        self.contrasenia = contrasenia
-        self.materias = materias
+# def escritura(student):
+# def lectura():
+# def modificacion():
 
 
-def escritura(student):
-    aceptado = True
-    repetido = None
-    for datos in estudiantes.objects:
-        comp_nom = student.nombre != datos.Nombre_estudiante
-        comp_cor = student.correo != datos.Correo_estudiantil
-        comp_con = student.contrasenia != datos.Contrasenia
-        comp_mat = student.materias != datos.Materias
-        if comp_nom and comp_cor and comp_con and comp_mat:
-            aceptado = True
-            repetido = False
-        else:
-            print("Estudiante ya ingresado")
-            repetido = True
-            input("Presione enter para continuar")
+class Menu(QtWidgets.QWidget):
 
-    if aceptado:
-        datos = estudiantes(
-            Nombre_estudiante=student.nombre,
-            Correo_estudiantil=student.correo,
-            Contrasenia=student.contrasenia,
-            Materias=student.materias)
+    class Estudiantes:
+        nombre = ""
+        correo = ""
+        contrasenia = ""
+        materias = ""
 
-        if repetido is True:
-            pass
-        else:
-            datos.save()
+        def __init__(self, nombre, correo, contrasenia, materias):
+            self.nombre = nombre
+            self.correo = correo
+            self.contrasenia = contrasenia
+            self.materias = materias
 
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Tarea 5")
+        self.layout = QtWidgets.QVBoxLayout(self)
+        # Se usara el mismo objeto para dedicar menos memoria
+        self.t1 = QtWidgets.QLabel("TAREA 5", alignment=QtCore.Qt.AlignCenter)
+        self.layout.addWidget(self.t1)
+        self.B1 = QtWidgets.QPushButton("1. Ingresar estudiante")
+        self.layout.addWidget(self.B1)
+        self.B2 = QtWidgets.QPushButton("2. Modificar estudiantes")
+        self.layout.addWidget(self.B2)
+        self.B3 = QtWidgets.QPushButton("3. Mostrar Estudiantes")
+        self.layout.addWidget(self.B3)
+        self.B4 = QtWidgets.QPushButton("4. Salir")
+        self.layout.addWidget(self.B4)
+        self.B1.clicked.connect(self.escritura)
+        self.B2.clicked.connect(self.modificacion)
+        self.B3.clicked.connect(self.lectura)
+        self.B4.clicked.connect(quit)
+        self.layout = QtWidgets.QVBoxLayout(self)
 
-def lectura():
-    i = 1
-    for Datos in estudiantes.objects:
-        print(f"\t****Estudiante{i}****")
-        print(f"\t{estudiantes.Nombre_estudiante.name}:{Datos.Nombre_estudiante}")
-        print(f"\t{estudiantes.Correo_estudiantil.name}:{Datos.Correo_estudiantil}")
-        print(f"\t{estudiantes.Contrasenia.name}:{Datos.Contrasenia}")
-        print(f"\t{estudiantes.Materias.name}:{Datos.Materias}")
-        print("")
-        i += 1
+    def escritura(self):
+        self.t1 = QtWidgets.QLabel("Ingresa nombre del estudiante: ")
+        self.layout.addWidget(self.t1)
+        self.e1 = QLineEdit()
+        self.layout.addWidget(self.e1)
+        self.t1 = QtWidgets.QLabel("Ingresa correo del estudiante: ")
+        self.layout.addWidget(self.t1)
+        self.e2 = QLineEdit()
+        self.layout.addWidget(self.e2)
+        self.t1 = QtWidgets.QLabel("Ingresa contrasenia del estudiante: ")
+        self.layout.addWidget(self.t1)
+        self.e3 = QLineEdit()
+        self.layout.addWidget(self.e3)
+        self.t1 = QtWidgets.QLabel("Ingresa materias del estudiante: ")
+        self.layout.addWidget(self.t1)
+        self.e4 = QLineEdit()
+        self.layout.addWidget(self.e4)
+        comp_nom = self.e1
+        comp_cor = self.e2
+        comp_con = self.e3
+        comp_mat = self.e4
+        aceptado = True
+        repetido = None
+        for datos in estudiantes.objects:
+            comp_nom != datos.Nombre_estudiante
+            comp_cor != datos.Correo_estudiantil
+            comp_con != datos.Contrasenia
+            comp_mat != datos.Materias
+            if comp_nom and comp_cor and comp_con and comp_mat:
+                aceptado = True
+                repetido = False
+            else:
+                print("Estudiante ya ingresado")
+                repetido = True
+                input("Presione enter para continuar")
 
-    if i == 1:
-        print("Base de datos esta vacia")
+        if aceptado:
+            datos = estudiantes(
+                Nombre_estudiante=comp_nom,
+                Correo_estudiantil=comp_cor,
+                Contrasenia=comp_con,
+                Materias=comp_mat)
 
+            if repetido is True:
+                pass
+            else:
+                datos.save()
 
-def eliminacion():
-    estudiantes.objects.delete()
-    print("La base de datos fue vaciada")
-    print("")
+    def modificacion(self):
+        p = estudiantes.objects(Nombre_estudiante="Cesar")
+        estudiantes.objects(Nombre_estudiante=p[0].Nombre_estudiante).update_one(set__Nombre_estudiante="Hola")
+        estudiantes.objects(Materias=p[0].Materias).update_one(set__Materias="Adios")
+        print(p[0].Contraseña)
+        p[0].save()
 
+    def lectura(self):
+        i = 1
+        for Datos in estudiantes.objects:
+            self.t1 = QtWidgets.QLabel(f"Estudiante {i}")
+            self.layout.addWidget(self.t1)
+            self.t1 = QtWidgets.QLabel(estudiantes.Nombre_estudiante.name)
+            self.layout.addWidget(self.t1)
+            self.t1 = QtWidgets.QLabel(Datos.Nombre_estudiante)
+            self.layout.addWidget(self.t1)
+            self.t1 = QtWidgets.QLabel(estudiantes.Correo_estudiantil.name)
+            self.layout.addWidget(self.t1)
+            self.t1 = QtWidgets.QLabel(Datos.Correo_estudiantil)
+            self.layout.addWidget(self.t1)
+            self.t1 = QtWidgets.QLabel(estudiantes.Contrasenia.name)
+            self.layout.addWidget(self.t1)
+            self.t1 = QtWidgets.QLabel(Datos.Contrasenia)
+            self.layout.addWidget(self.t1)
+            self.t1 = QtWidgets.QLabel(estudiantes.Materias.name)
+            self.layout.addWidget(self.t1)
+            self.t1 = QtWidgets.QLabel(Datos.Materias)
+            self.layout.addWidget(self.t1)
+            i += 1
 
-def modificacion():
-    p = estudiantes.objects(Nombre_estudiante="Cesar")
-    estudiantes.objects(Nombre_estudiante=p[0].Nombre_estudiante).update_one(set__Nombre_estudiante="Hola")
-    estudiantes.objects(Materias=p[0].Materias).update_one(set__Materias="Adios")
-    print(p[0].Contraseña)
-    p[0].save()
-
-
-def menu():
-    ciclo = True
-
-    while ciclo:
-        print("\n\t\t\tTAREA 4\n")
-        print("Bienvenido al menu de opciones.\n")
-        print("1. Ingresar estudiante.")
-        print("2. Modificar estudiante.")
-        print("3. Mostrar estudiantes.")
-        print("4. Eliminar estudiantes.")
-        print("5. Salir")
-        opcion = input("Seleciona un opcion: ")
-        if opcion == "1":
-            print("")
-            nombre = input("Ingresa nombre del estudiante: ")
-            correo = input("Ingresa correo del estudiante: ")
-            contrasenia = input("Ingresa contrasenia del estudiante: ")
-            materias = input("Ingresa materias del estudiante: ")
-            escritura(Estudiantes(nombre, correo, contrasenia, materias))
-        if opcion == "2":
-            modificacion()
-        if opcion == "3":
-            lectura()
-        if opcion == "4":
-            eliminacion()
-        if opcion == "5":
-            ciclo = False
+        if i == 1:
+            self.t1 = QtWidgets.QLabel("Base de datos vacias.")
+            self.layout.addWidget(self.t1)
 
 
 if __name__ == '__main__':
-    menu()
+    app = QtWidgets.QApplication([])
+    widget = Menu()
+    widget.resize(600, 450)
+    widget.show()
+    sys.exit(app.exec_())
