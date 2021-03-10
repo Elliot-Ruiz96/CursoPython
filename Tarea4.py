@@ -77,6 +77,7 @@ def lectura():
 
 
 def eliminacion():
+    # [PV] Se debe eliminar solo un usuario
     estudiantes.objects.delete()
     print("La base de datos fue vaciada")
     print("")
@@ -84,6 +85,7 @@ def eliminacion():
 
 def modificacion():
 
+    # [PV] para modificar primero se debe obtener un objeto, realizar las modificaciones despues guardar de nuevo
     # User =  input("Ingresa nombre de usuario a modificar: ")
     # User_nuev = input("Ingresa el nuevo nombre el usuario");
     # estudiantes.objects(Nombre_estudiante = User).update_one(set__Nombre_estudiante = User_nuev)
