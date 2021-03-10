@@ -14,11 +14,14 @@ def menu():
         print("Ingrese su eleccion: ")
         choice = input()
         if choice == '1':
+            # [PV] Ver comentarios el archivo StudentIO.py
             agregar()
         elif choice == '2':
+            # [PV] Ver comentarios el archivo StudentIO.py
             lectura()
             pickle1()
         elif choice == '3':
+            # [PV] Ver comentarios el archivo StudentIO.py
             actualizar()
         elif choice == '4':
             print("Adios!")

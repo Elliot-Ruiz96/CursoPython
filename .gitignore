@@ -7,3 +7,4 @@ venv
 *.user
 *.ui
 ejemplo/form.ui
+*.pyc
