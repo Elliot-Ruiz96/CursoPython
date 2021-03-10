@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 from PySide6 import QtCore, QtWidgets
+=======
+# from PySide6 import QtCore, QtWidgets
+from PySide2 import QtCore, QtWidgets
+>>>>>>> c2b9e651e378cf9e3edeb8068587e5cd18aa8cde
 from mongoengine import *
 import sys
 
@@ -136,6 +141,10 @@ class Menu(QtWidgets.QWidget):
     def removeAlumno(self):
         nombre = self.nameLine.text()
 
+<<<<<<< HEAD
+=======
+        # [PV] No se interactua con la BD
+>>>>>>> c2b9e651e378cf9e3edeb8068587e5cd18aa8cde
         if nombre in self.database:
             boton = QtWidgets.QMessageBox.question(self, "Confirmar", "Estas seguro de quitar a \"%s\"?" % nombre,
                                                    QtWidgets.QMessageBox.Yes, QtWidgets.QMessageBox.No)
@@ -165,6 +174,11 @@ class Menu(QtWidgets.QWidget):
                     Contrasenia=contra,
                     Materias=materi)
                 QtWidgets.QMessageBox.information(self, "Operacion exitosa", "\%s\" ha sido añadido." % nombre)
+<<<<<<< HEAD
+=======
+
+                # [PV] No se guarda a la BD
+>>>>>>> c2b9e651e378cf9e3edeb8068587e5cd18aa8cde
             else:
                 QtWidgets.QMessageBox.information(self, "Operacion fallida", "\%s\" ya ha sido añadido antes." % nombre)
             return
@@ -174,6 +188,10 @@ class Menu(QtWidgets.QWidget):
                 if nombre not in self.database:
                     QtWidgets.QMessageBox.information(self, "Operacion exitosa", "\"%s\" ha sido añadido."
                                                       % self.oldName)
+<<<<<<< HEAD
+=======
+                    # [PV] No se interactua con la BD
+>>>>>>> c2b9e651e378cf9e3edeb8068587e5cd18aa8cde
                     del self.database[self.oldName]
                     self.database[nombre] = correo
                     self.database[nombre] = contra
@@ -290,7 +308,12 @@ class Menu(QtWidgets.QWidget):
             number = len(self.database)
             self.editButton.setEnabled(number >= 1)
             self.removeButton.setEnabled(number >= 1)
+<<<<<<< HEAD
             self.findButton.setEnabled(number > 2)
+=======
+            # [PV] El boton findButton no existe en otro lugar del programa
+            # self.findButton.setEnabled(number > 2)
+>>>>>>> c2b9e651e378cf9e3edeb8068587e5cd18aa8cde
             self.nextButton.setEnabled(number > 1)
             self.previousButton.setEnabled(number > 1)
 
