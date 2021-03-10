@@ -55,6 +55,7 @@ e4 = Estudiante("KARLA", "ADMINISTRACION", "karlahe@iee.org", "16240060", "86.47
 
 
 def agregar():
+    # [PV] Solo se cambia el priemr objeto
     print("Ingresa tu nombre completo: ")
     e.setnombre()
     print("Ingresa tu carrera: ")
@@ -68,6 +69,7 @@ def agregar():
 
 
 def lectura():
+    # [PV] Se puede usar un loop para mostrarlos todos
     print("Nombre:")
     print(e.getnombre())
     print('Carrera:')
@@ -81,6 +83,7 @@ def lectura():
 
 
 def actualizar():
+    # [PV] Siempre se edita el primer objeto
     print("Ingresa tu nombre completo: ")
     e.setnombre()
     print("Ingresa tu carrera: ")
