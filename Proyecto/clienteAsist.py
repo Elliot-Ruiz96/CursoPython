@@ -26,11 +26,12 @@ class Menu(QtWidgets.QWidget):
         # Botones para funcion de menu
         self.submitButton = QtWidgets.QPushButton("&Confirma")
         # Cambiar para archivo
-        self.codeButton = QtWidgets.QPushButton("&Envia codigo")
+        self.codeButton = QtWidgets.QPushButton("&Buscar...")
+        self.codeButton.setToolTip("Cargar archivo .zip")
 
         # Definir la conexion a funciones
         self.submitButton.clicked.connect(self.submitAlumno)
-        self.codeButton.clicked.connect(self.enviarCodigo)
+        self.codeButton.clicked.connect(self.buscarCodigo)
 
         # Layout de funciones principales
         buttonLayout1 = QtWidgets.QVBoxLayout()
@@ -71,8 +72,28 @@ class Menu(QtWidgets.QWidget):
 
         s.close()
 
-    def enviarCodigo(self):
-        self.nameLine.setText(self.oldName)
+    def buscarCodigo(self):
+        s = socket.socket()
+
+        host = '3.16.226.150'
+        port = 9999
+
+        s.connect((host, port))
+
+        fileName,_ = QtWidgets.QFileDialog.getOpenFileName(self,
+                "Open ZIP file", '',
+                "Zip file (*.zip);;All Files (*)")
+        if not fileName:
+            return
+
+        fileName_seriado = pickle.dumps(fileName)
+
+        s.send(fileName_seriado)
+
+        res = s.recv(1024)
+        print(f'Respuesta: \n\t{res.decode()}')
+
+        s.close()
 
 
 if __name__ == '__main__':
