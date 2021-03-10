@@ -14,6 +14,8 @@ class Menu(QtWidgets.QWidget):
     def __init__(self, parent=None):
         super(Menu, self).__init__(parent)
 
+        # Se realiza la codificacion en lugar del archivo ui
+
         nameLabel1 = QtWidgets.QLabel("Nombre:")
         self.nameLine = QtWidgets.QLineEdit()
 
@@ -52,12 +54,15 @@ class Menu(QtWidgets.QWidget):
         self.setLayout(mainLayout)
         self.setWindowTitle("Proyecto")
 
-    def submitAlumno(self):
+    def submitAlumno(self, fileName):
         # Agregar clase estudiante
         s = socket.socket()
 
+# Port = 9997 proyecto final
+# Port = 9998 pruebas
+
         host = '3.16.226.150'
-        port = 9999
+        port = 9998
 
         s.connect((host, port))
 
@@ -76,13 +81,14 @@ class Menu(QtWidgets.QWidget):
         s = socket.socket()
 
         host = '3.16.226.150'
-        port = 9999
+        port = 9998
 
         s.connect((host, port))
 
-        fileName,_ = QtWidgets.QFileDialog.getOpenFileName(self,
-                "Open ZIP file", '',
-                "Zip file (*.zip);;All Files (*)")
+        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(self,
+                                                            "Open ZIP file",
+                                                            '',
+                                                            "Zip file (*.zip);;All Files (*)")
         if not fileName:
             return
 
@@ -94,7 +100,7 @@ class Menu(QtWidgets.QWidget):
         print(f'Respuesta: \n\t{res.decode()}')
 
         s.close()
-
+        
 
 if __name__ == '__main__':
 
