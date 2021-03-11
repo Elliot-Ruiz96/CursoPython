@@ -53,6 +53,10 @@ class Menu(QtWidgets.QWidget):
         res = s.recv(1024)
         print(f'Respuesta: \n\t{res.decode()}')
 
+        s.send(b'INI')
+        res = s.recv(1024)
+        print(f'Respuesta: \n\t{res.decode()}')
+
         fileName, _ = QtWidgets.QFileDialog.getOpenFileName(self,
                                                             "Open ZIP file",
                                                             '',
@@ -60,7 +64,9 @@ class Menu(QtWidgets.QWidget):
         if not fileName:
             return
 
-        fileName_seriado = pickle.dumps(fileName)
+        fileName2 = open(fileName, 'rb')
+
+        fileName_seriado = pickle.dumps(fileName2.read())
 
         i = True
         j = 0
@@ -71,10 +77,6 @@ class Menu(QtWidgets.QWidget):
             if not chunk:
                 i = False
                 continue
-
-            s.send(b'INI')
-            res = s.recv(1024)
-            print(f'Respuesta: \n\t{res.decode()}')
 
             s.send(chunk)
             res = s.recv(1024)
