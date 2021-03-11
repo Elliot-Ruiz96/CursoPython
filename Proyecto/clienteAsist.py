@@ -5,7 +5,7 @@ import socket
 import pickle
 
 host = '3.16.226.150'
-port = 9998
+port = 9997
 
 
 class Menu(QtWidgets.QWidget):
@@ -53,10 +53,6 @@ class Menu(QtWidgets.QWidget):
         res = s.recv(1024)
         print(f'Respuesta: \n\t{res.decode()}')
 
-        s.send(b'INI')
-        res = s.recv(1024)
-        print(f'Respuesta: \n\t{res.decode()}')
-
         fileName, _ = QtWidgets.QFileDialog.getOpenFileName(self,
                                                             "Open ZIP file",
                                                             '',
@@ -70,10 +66,15 @@ class Menu(QtWidgets.QWidget):
         j = 0
 
         while i:
-            chunk = fileName_seriado[j: i + 1024]
+            chunk = fileName_seriado[j: j + 1024]
 
             if not chunk:
-                break
+                i = False
+                continue
+
+            s.send(b'INI')
+            res = s.recv(1024)
+            print(f'Respuesta: \n\t{res.decode()}')
 
             s.send(chunk)
             res = s.recv(1024)
@@ -81,9 +82,6 @@ class Menu(QtWidgets.QWidget):
             j += 1024
 
         s.send(b'FIN')
-        res = s.recv(1024)
-        print(f'Respuesta: \n\t{res.decode()}')
-
         res = s.recv(1024)
         print(f'Respuesta: \n\t{res.decode()}')
 
